@@ -11,11 +11,24 @@ import {
   FiFolder,
   FiGitBranch,
   FiLinkedin,
+  FiLink,
   FiMail,
   FiMessageCircle,
   FiPhone,
   FiPlay,
 } from "react-icons/fi";
+import {
+  SiAirtable,
+  SiDiscord,
+  SiGooglesheets,
+  SiMake,
+  SiN8N,
+  SiNextdotjs,
+  SiTailwindcss,
+  SiTelegram,
+  SiTypescript,
+  SiZapier,
+} from "react-icons/si";
 
 type Project = {
   number: string;
@@ -34,7 +47,16 @@ type Capability = {
 
 type ToolGroup = {
   label: string;
-  tools: string[];
+  icon: IconType;
+  featured?: boolean;
+  tools: Tool[];
+};
+
+type Tool = {
+  name: string;
+  description: string;
+  icon: IconType;
+  iconClassName: string;
 };
 
 const projects: Project[] = [
@@ -108,23 +130,101 @@ const capabilities: Capability[] = [
 
 const toolGroups: ToolGroup[] = [
   {
-    label: "Automation Platforms",
-    tools: ["n8n", "Make", "Zapier", "GoHighLevel"],
-  },
-  {
-    label: "Integrations & Data",
+    label: "Automation Core",
+    icon: FiCpu,
+    featured: true,
     tools: [
-      "Airtable",
-      "Telegram",
-      "Google Sheets",
-      "Email",
-      "Discord",
-      "APIs & Webhooks",
+      {
+        name: "n8n",
+        description: "Workflow Orchestration",
+        icon: SiN8N,
+        iconClassName: "text-[#ea4b71]",
+      },
+      {
+        name: "Make",
+        description: "Scenario Automation",
+        icon: SiMake,
+        iconClassName: "text-[#a855f7]",
+      },
+      {
+        name: "Zapier",
+        description: "Trigger-Action Flows",
+        icon: SiZapier,
+        iconClassName: "text-[#ff4f00]",
+      },
+      {
+        name: "GoHighLevel",
+        description: "CRM & Pipelines",
+        icon: FiBarChart2,
+        iconClassName: "text-[#38bdf8]",
+      },
     ],
   },
   {
-    label: "Web Build",
-    tools: ["Next.js", "TypeScript", "Tailwind CSS"],
+    label: "Integrations & Data",
+    icon: FiDatabase,
+    tools: [
+      {
+        name: "Airtable",
+        description: "Records",
+        icon: SiAirtable,
+        iconClassName: "text-[#fcb400]",
+      },
+      {
+        name: "Telegram",
+        description: "Bots & Commands",
+        icon: SiTelegram,
+        iconClassName: "text-[#2aabee]",
+      },
+      {
+        name: "Google Sheets",
+        description: "Structured Data",
+        icon: SiGooglesheets,
+        iconClassName: "text-[#34a853]",
+      },
+      {
+        name: "Email",
+        description: "Notifications",
+        icon: FiMail,
+        iconClassName: "text-[#60a5fa]",
+      },
+      {
+        name: "Discord",
+        description: "Team Alerts",
+        icon: SiDiscord,
+        iconClassName: "text-[#7289da]",
+      },
+      {
+        name: "APIs & Webhooks",
+        description: "Connectivity",
+        icon: FiLink,
+        iconClassName: "text-[#2dd4bf]",
+      },
+    ],
+  },
+  {
+    label: "Web Development",
+    icon: FiCode,
+    tools: [
+      {
+        name: "Next.js",
+        description: "Modern Interfaces",
+        icon: SiNextdotjs,
+        iconClassName: "text-white",
+      },
+      {
+        name: "TypeScript",
+        description: "Reliable Code",
+        icon: SiTypescript,
+        iconClassName: "text-[#3178c6]",
+      },
+      {
+        name: "Tailwind CSS",
+        description: "Responsive Design",
+        icon: SiTailwindcss,
+        iconClassName: "text-[#38bdf8]",
+      },
+    ],
   },
 ];
 
@@ -268,28 +368,89 @@ export default function PortfolioSections() {
             })}
           </div>
 
-          <div className="mt-10 grid gap-4 lg:grid-cols-3">
-            {toolGroups.map((group) => (
-              <div
-                key={group.label}
-                className="rounded-2xl border border-white/10 bg-[#111c2d] p-5"
-              >
-                <p className="text-[10px] font-black uppercase tracking-[0.18em] text-teal-300">
-                  {group.label}
+          <div className="mt-16 border-t border-white/10 pt-12">
+            <div className="grid gap-5 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+              <div>
+                <p className="text-xs font-black uppercase tracking-[0.22em] text-teal-300">
+                  Tools I build with
                 </p>
 
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {group.tools.map((tool) => (
-                    <span
-                      key={tool}
-                      className="rounded-full border border-white/10 bg-white/[0.055] px-3 py-2 text-xs font-bold text-slate-200"
-                    >
-                      {tool}
-                    </span>
-                  ))}
-                </div>
+                <h3 className="mt-3 max-w-3xl text-3xl font-black tracking-[-0.035em] sm:text-4xl">
+                  The platforms behind my automation systems.
+                </h3>
               </div>
-            ))}
+
+              <p className="max-w-2xl text-sm leading-7 text-slate-400 lg:justify-self-end">
+                A practical stack for building connected workflows,
+                intelligent processing, and clear web experiences.
+              </p>
+            </div>
+
+            <div className="mt-8 grid gap-5 lg:grid-cols-[0.95fr_1.12fr_0.93fr]">
+              {toolGroups.map((group) => {
+                const GroupIcon = group.icon;
+
+                return (
+                  <article
+                    key={group.label}
+                    className={`rounded-3xl border p-5 sm:p-6 ${
+                      group.featured
+                        ? "border-teal-300/30 bg-teal-300/[0.045] shadow-lg shadow-teal-950/20"
+                        : "border-white/10 bg-[#111c2d]"
+                    }`}
+                  >
+                    <div className="flex items-center gap-3">
+                      <span className="grid h-10 w-10 place-items-center rounded-xl border border-teal-300/20 bg-teal-300/10 text-teal-300">
+                        <GroupIcon aria-hidden="true" className="h-5 w-5" />
+                      </span>
+
+                      <h4 className="text-xs font-black uppercase tracking-[0.17em] text-teal-300">
+                        {group.label}
+                      </h4>
+                    </div>
+
+                    <div
+                      className={`mt-5 grid gap-3 ${
+                        group.label === "Integrations & Data"
+                          ? "min-[520px]:grid-cols-2 lg:grid-cols-2"
+                          : "grid-cols-1"
+                      }`}
+                    >
+                      {group.tools.map((tool) => {
+                        const ToolIcon = tool.icon;
+
+                        return (
+                          <div
+                            key={tool.name}
+                            className={`flex min-w-0 items-center gap-3 rounded-2xl border p-3.5 transition duration-300 hover:-translate-y-0.5 hover:bg-white/[0.075] ${
+                              group.featured
+                                ? "border-teal-300/35 bg-[#0e1a29]"
+                                : "border-white/10 bg-white/[0.035]"
+                            }`}
+                          >
+                            <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-white/10 bg-[#0b1220] shadow-inner shadow-white/5">
+                              <ToolIcon
+                                aria-hidden="true"
+                                className={`h-6 w-6 ${tool.iconClassName}`}
+                              />
+                            </span>
+
+                            <span className="min-w-0">
+                              <span className="block text-sm font-extrabold text-white sm:text-base">
+                                {tool.name}
+                              </span>
+                              <span className="mt-0.5 block text-[11px] leading-4 text-slate-400 sm:text-xs">
+                                {tool.description}
+                              </span>
+                            </span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
