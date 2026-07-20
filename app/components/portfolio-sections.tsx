@@ -62,21 +62,21 @@ type Tool = {
 const projects: Project[] = [
   {
     number: "01",
-    title: "GoHighLevel CRM Workflow",
-    description:
-      "A portfolio walkthrough of a CRM-focused automation build created in GoHighLevel, centered on organizing leads, pipeline actions, and follow-up steps.",
-    videoId: "UhqExlUGIgU",
-    youtubeUrl: "https://youtu.be/UhqExlUGIgU",
-    tags: ["GoHighLevel", "CRM Workflow", "Automation"],
-  },
-  {
-    number: "02",
     title: "EcomOpsAI",
     description:
       "An AI-assisted ecommerce operations demo that connects request handling, workflow logic, structured information, and automated actions.",
     videoId: "Vwvy7PJZmXw",
     youtubeUrl: "https://youtu.be/Vwvy7PJZmXw",
     tags: ["Ecommerce Ops", "AI Processing", "Workflow Logic"],
+  },
+  {
+    number: "02",
+    title: "GoHighLevel CRM Workflow",
+    description:
+      "A portfolio walkthrough of a CRM-focused automation build created in GoHighLevel, centered on organizing leads, pipeline actions, and follow-up steps.",
+    videoId: "UhqExlUGIgU",
+    youtubeUrl: "https://youtu.be/UhqExlUGIgU",
+    tags: ["GoHighLevel", "CRM Workflow", "Automation"],
   },
   {
     number: "03",
