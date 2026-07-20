@@ -369,7 +369,7 @@ export default function PortfolioSections() {
           </div>
 
           <div className="mt-16 border-t border-white/10 pt-12">
-            <div className="grid gap-5 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+            <div className="grid gap-5 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
               <div>
                 <p className="text-xs font-black uppercase tracking-[0.22em] text-teal-300">
                   Tools I build with
@@ -380,7 +380,7 @@ export default function PortfolioSections() {
                 </h3>
               </div>
 
-              <p className="max-w-2xl text-sm leading-7 text-slate-400 lg:justify-self-end">
+              <p className="max-w-2xl text-sm leading-7 text-slate-400 lg:justify-self-end lg:pt-8">
                 A practical stack for building connected workflows,
                 intelligent processing, and clear web experiences.
               </p>
